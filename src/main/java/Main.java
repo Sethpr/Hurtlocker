@@ -9,9 +9,7 @@ public class Main {
     public static void main(String[] args) throws Exception{
         String output = IOUtils.toString((new Main()).getClass().getClassLoader().getResourceAsStream("RawData.txt"));
         StringBuilder sb = new StringBuilder("\nErrors        	 	 seen: " +Pattern.compile("[:@^*%;][:@^*%;]").matcher(output).results().count() +" times");
-        for (int i = name.length-1; i >= 0; i--) {
-            process(Pattern.compile("(?i)(?<=name:"+name[i].charAt(0)+".{"+(name[i].length() - 1)+"};price[:;])[0-9].[0-9][0-9]+(?=;)").matcher(output).results().map((p) -> p.group()).collect(Collectors.toList()), name[i], sb);
-        }
+        Arrays.stream(name).forEach((n->process(Pattern.compile("(?i)(?<=name:"+n.charAt(0)+".{"+(n.length() - 1)+"};price[:;])[0-9].[0-9][0-9]+(?=;)").matcher(output).results().map((p) -> p.group()).collect(Collectors.toList()), n, sb)));
         System.out.println(sb);
     }
 
