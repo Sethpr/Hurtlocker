@@ -4,12 +4,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Main {
-    static final String[] name = {"Apples","Cookies","Bread","Milk"};
-
     public static void main(String[] args) throws Exception{
         String output = IOUtils.toString((new Main()).getClass().getClassLoader().getResourceAsStream("RawData.txt"));
         StringBuilder sb = new StringBuilder("\nErrors        	 	seen: "+Pattern.compile("[:@^*%;][:@^*%;]").matcher(output).results().count()+" times");
-        Arrays.stream(name).forEach((n->process(Pattern.compile("(?i)(?<=name:"+n.charAt(0)+".{"+(n.length()-1)+"};price[:;])\\d.\\d\\d(?=;)").matcher(output).results().map((p)->p.group()).collect(Collectors.toList()),n,sb)));
+        Arrays.stream(new String[]{"Apples","Cookies","Bread","Milk"}).forEach((n->process(Pattern.compile("(?i)(?<=name:"+n.charAt(0)+".{"+(n.length()-1)+"};price[:;])\\d.\\d\\d(?=;)").matcher(output).results().map((p)->p.group()).collect(Collectors.toList()),n,sb)));
         System.out.println(sb);
     }
 
