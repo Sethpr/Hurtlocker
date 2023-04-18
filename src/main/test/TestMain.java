@@ -10,7 +10,7 @@ public class TestMain {
     @Test
     public void testProcess() {
         String expected = ""+
-                "name:     Pie       seen: 3 times\n" +
+                "\nname:     Pie       seen: 3 times\n" +
                 "=============       =============\n" +
                 "Price:   2.99       seen: 3 times\n" +
                 "-------------       -------------\n\n";
