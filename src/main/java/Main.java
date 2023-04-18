@@ -16,9 +16,7 @@ public class Main {
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < name.length; i++) {
-            sb.append(process(getList(name[i], output),name[i]));
-        }
+        Arrays.stream(name).forEach(n->sb.append(process(getList(n, output),n)));
         sb.append("Errors        	 	 seen: " +Pattern.compile("[:@^*%;][:@^*%;]", Pattern.CASE_INSENSITIVE).matcher(output).results().count() +" times");
         System.out.println(sb);
     }
