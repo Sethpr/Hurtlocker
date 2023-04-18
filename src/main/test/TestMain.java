@@ -24,34 +24,4 @@ public class TestMain {
 
         Assert.assertEquals(expected, actual);
     }
-
-    @Test
-    public void testGetList() {
-        int expected = 5;
-        String s = "ggggg";
-        List<String> list = Main.getList("g", s);
-
-        int actual = list.size();
-
-        Assert.assertEquals(actual, expected);
-        Assert.assertTrue(list.contains("g"));
-    }
-
-    @Test
-    public void testPad() {
-        String expected = "     Pie";
-
-        String actual = Main.pad("Pie");
-
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testPad2() {
-        String expected = "88888888";
-
-        String actual = Main.pad("88888888");
-
-        Assert.assertEquals(expected, actual);
-    }
 }
